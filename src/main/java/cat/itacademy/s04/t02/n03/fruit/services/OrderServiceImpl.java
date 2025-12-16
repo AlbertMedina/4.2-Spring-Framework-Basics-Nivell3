@@ -6,10 +6,12 @@ import cat.itacademy.s04.t02.n03.fruit.model.Order;
 import cat.itacademy.s04.t02.n03.fruit.model.OrderItem;
 import cat.itacademy.s04.t02.n03.fruit.repository.OrderRepository;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+@Service
 public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
