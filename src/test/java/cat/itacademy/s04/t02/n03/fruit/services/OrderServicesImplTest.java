@@ -17,7 +17,6 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.verify;
@@ -94,7 +93,7 @@ public class OrderServicesImplTest {
 
         Order result = orderService.getOrderById("1");
 
-        assertNotNull(order);
+        assertNotNull(result);
         assertEquals("Albert", result.getCustomerName());
         assertEquals(LocalDate.of(2025, 1, 1), result.getDeliveryDate());
         assertEquals(2, result.getItems().size());
