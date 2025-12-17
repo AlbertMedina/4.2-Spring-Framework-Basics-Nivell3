@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:7.0
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: fruit_orders_db
+    volumes:
+      - mongo_data:/data/db
+
+  fruit-order-api:
+    build: .
+    container_name: fruit-order-api
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/fruit_orders_db
+    depends_on:
+      - mongo
+
+volumes:
+  mongo_data:
