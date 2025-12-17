@@ -32,7 +32,7 @@ public class OrderServicesImplTest {
 
     @Test
     void createOrder_shouldSaveOrder() {
-        OrderDTO orderDTO = new OrderDTO("Albert", LocalDate.of(2025, 1, 1), List.of(new OrderItemDTO("Watermelon", 2), new OrderItemDTO("Melon", 3)));
+        OrderDTO orderDTO = new OrderDTO("Albert", LocalDate.of(2026, 1, 1), List.of(new OrderItemDTO("Watermelon", 2), new OrderItemDTO("Melon", 3)));
 
         when(orderRepository.save(any(Order.class))).thenAnswer(i -> i.getArgument(0));
 
@@ -40,7 +40,7 @@ public class OrderServicesImplTest {
 
         assertNotNull(order);
         assertEquals("Albert", order.getCustomerName());
-        assertEquals(LocalDate.of(2025, 1, 1), order.getDeliveryDate());
+        assertEquals(LocalDate.of(2026, 1, 1), order.getDeliveryDate());
         assertEquals(2, order.getItems().size());
         assertEquals("Watermelon", order.getItems().get(0).getFruitName());
         assertEquals(2, order.getItems().get(0).getQuantityInKg());
@@ -52,17 +52,17 @@ public class OrderServicesImplTest {
 
     @Test
     void updateOrder_shouldUpdateExistingOrder() {
-        Order order = new Order("Albert", LocalDate.of(2025, 1, 1), List.of(new OrderItem("Watermelon", 2), new OrderItem("Melon", 3)));
+        Order order = new Order("Albert", LocalDate.of(2026, 1, 1), List.of(new OrderItem("Watermelon", 2), new OrderItem("Melon", 3)));
 
         when(orderRepository.findById("1")).thenReturn(Optional.of(order));
         when(orderRepository.save(any(Order.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
-        OrderDTO orderDTO = new OrderDTO("Albert", LocalDate.of(2025, 1, 1), List.of(new OrderItemDTO("Watermelon", 2), new OrderItemDTO("Melon", 3)));
+        OrderDTO orderDTO = new OrderDTO("Albert", LocalDate.of(2026, 1, 1), List.of(new OrderItemDTO("Watermelon", 2), new OrderItemDTO("Melon", 3)));
 
         Order updated = orderService.updateOrder("1", orderDTO);
 
         assertEquals("Albert", updated.getCustomerName());
-        assertEquals(LocalDate.of(2025, 1, 1), updated.getDeliveryDate());
+        assertEquals(LocalDate.of(2026, 1, 1), updated.getDeliveryDate());
         assertEquals(2, updated.getItems().size());
         assertEquals("Watermelon", updated.getItems().get(0).getFruitName());
         assertEquals(2, updated.getItems().get(0).getQuantityInKg());
@@ -87,7 +87,7 @@ public class OrderServicesImplTest {
 
     @Test
     void getOrderById_shouldReturnOrder() {
-        Order order = new Order("Albert", LocalDate.of(2025, 1, 1), List.of(new OrderItem("Watermelon", 2), new OrderItem("Melon", 3)));
+        Order order = new Order("Albert", LocalDate.of(2026, 1, 1), List.of(new OrderItem("Watermelon", 2), new OrderItem("Melon", 3)));
 
         when(orderRepository.findById("1")).thenReturn(Optional.of(order));
 
@@ -95,7 +95,7 @@ public class OrderServicesImplTest {
 
         assertNotNull(result);
         assertEquals("Albert", result.getCustomerName());
-        assertEquals(LocalDate.of(2025, 1, 1), result.getDeliveryDate());
+        assertEquals(LocalDate.of(2026, 1, 1), result.getDeliveryDate());
         assertEquals(2, result.getItems().size());
         assertEquals("Watermelon", result.getItems().get(0).getFruitName());
         assertEquals(2, result.getItems().get(0).getQuantityInKg());
@@ -107,8 +107,8 @@ public class OrderServicesImplTest {
 
     @Test
     void getAllOrders_shouldReturnListOfOrders() {
-        Order order1 = new Order("Albert", LocalDate.of(2025, 1, 1), List.of(new OrderItem("Watermelon", 2), new OrderItem("Melon", 3)));
-        Order order2 = new Order("Joao", LocalDate.of(2025, 2, 2), List.of(new OrderItem("Apple", 1)));
+        Order order1 = new Order("Albert", LocalDate.of(2026, 1, 1), List.of(new OrderItem("Watermelon", 2), new OrderItem("Melon", 3)));
+        Order order2 = new Order("Joao", LocalDate.of(2026, 2, 2), List.of(new OrderItem("Apple", 1)));
 
         when(orderRepository.findAll()).thenReturn(Arrays.asList(order1, order2));
 
