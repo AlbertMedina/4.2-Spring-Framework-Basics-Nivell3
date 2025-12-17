@@ -95,13 +95,13 @@ public class OrderServicesImplTest {
         Order result = orderService.getOrderById("1");
 
         assertNotNull(order);
-        assertEquals("Albert", order.getCustomerName());
-        assertEquals(LocalDate.of(2025, 1, 1), order.getDeliveryDate());
-        assertEquals(2, order.getItems().size());
-        assertEquals("Watermelon", order.getItems().get(0).getFruitName());
-        assertEquals(2, order.getItems().get(0).getQuantityInKg());
-        assertEquals("Melon", order.getItems().get(1).getFruitName());
-        assertEquals(3, order.getItems().get(1).getQuantityInKg());
+        assertEquals("Albert", result.getCustomerName());
+        assertEquals(LocalDate.of(2025, 1, 1), result.getDeliveryDate());
+        assertEquals(2, result.getItems().size());
+        assertEquals("Watermelon", result.getItems().get(0).getFruitName());
+        assertEquals(2, result.getItems().get(0).getQuantityInKg());
+        assertEquals("Melon", result.getItems().get(1).getFruitName());
+        assertEquals(3, result.getItems().get(1).getQuantityInKg());
 
         verify(orderRepository).findById("1");
     }
